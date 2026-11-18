@@ -1,0 +1,31 @@
+/* Estilos globales del portafolio.
+   El tema (claro/oscuro) se controla con variables CSS:
+   React cambia el atributo data-tema del <html> y todo se adapta. */
+
+:root {
+  --fondo: #ffffff;
+  --texto: #1c1e21;
+  --acento: #0b5cad;
+  --tarjeta: #f2f4f7;
+  --borde: #d8dde3;
+}
+
+[data-tema="oscuro"] {
+  --fondo: #12161c;
+  --texto: #e8ecf1;
+  --acento: #5aa2e8;
+  --tarjeta: #1c232e;
+  --borde: #33404f;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  line-height: 1.6;
+  transition: background .25s, color .25s;
+}
+
+a { color: var(--acento); }

@@ -1,0 +1,164 @@
+/* Estilos de los componentes del portafolio
+   (los colores salen de las variables definidas en index.css) */
+
+/* ---------- Encabezado y navegación ---------- */
+.encabezado {
+  border-bottom: 1px solid var(--borde);
+  padding: 16px 20px 40px;
+}
+
+.navegacion {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 22px;
+  color: var(--acento);
+}
+
+.navegacion ul {
+  list-style: none;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-right: auto;
+}
+
+.navegacion a { text-decoration: none; }
+.navegacion a:hover { text-decoration: underline; }
+
+#btn-tema {
+  padding: 8px 14px;
+  border: 1px solid var(--borde);
+  border-radius: 20px;
+  background: var(--tarjeta);
+  color: var(--texto);
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.presentacion {
+  max-width: 960px;
+  margin: 48px auto 0;
+}
+
+.presentacion h1 { font-size: 36px; margin-bottom: 12px; }
+.presentacion p { max-width: 640px; font-size: 18px; }
+
+.boton {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 22px;
+  background: var(--acento);
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+/* ---------- Secciones ---------- */
+.seccion {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.seccion h2 {
+  font-size: 26px;
+  margin-bottom: 16px;
+  border-bottom: 3px solid var(--acento);
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+.seccion p { margin-bottom: 12px; }
+
+/* Habilidades en forma de etiquetas */
+.habilidades {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.habilidades li {
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-weight: bold;
+}
+
+/* Tarjetas de proyectos: rejilla que se adapta al ancho */
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.tarjeta {
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 18px;
+}
+
+.tarjeta h3 { margin-bottom: 8px; color: var(--acento); }
+.tarjeta .tecnologias { font-size: 13px; opacity: .75; margin-top: 8px; }
+
+/* ---------- Formulario de contacto ---------- */
+.form-contacto {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 480px;
+  margin-top: 16px;
+}
+
+.form-contacto label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-weight: bold;
+}
+
+.form-contacto input,
+.form-contacto textarea {
+  padding: 10px;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  background: var(--fondo);
+  color: var(--texto);
+  font-size: 15px;
+  font-family: inherit;
+}
+
+.form-contacto button {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background: var(--acento);
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* ---------- Pie ---------- */
+.pie {
+  text-align: center;
+  padding: 24px 20px;
+  border-top: 1px solid var(--borde);
+  font-size: 14px;
+  opacity: .8;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 560px) {
+  .presentacion h1 { font-size: 28px; }
+  .navegacion { gap: 12px; }
+}
