@@ -1,31 +1,72 @@
 /* Estilos globales del portafolio.
    El tema (claro/oscuro) se controla con variables CSS:
-   React cambia el atributo data-tema del <html> y todo se adapta. */
+   React cambia el atributo data-tema del <html> y todo se adapta.
+   El idioma no necesita CSS: solo cambia los textos. */
 
 :root {
   --fondo: #ffffff;
+  --fondo-suave: #f7f9fc;
   --texto: #1c1e21;
+  --texto-suave: #5b6572;
   --acento: #0b5cad;
+  --acento-fuerte: #084a8a;
+  --acento-suave: #e3eefb;
   --tarjeta: #f2f4f7;
   --borde: #d8dde3;
+  --exito-fondo: #e6f4ea;
+  --exito-texto: #14632e;
+  --exito-borde: #34a853;
+  --error: #b3261e;
+  --sombra: 0 4px 18px rgba(15, 35, 60, 0.08);
+  --radio: 12px;
 }
 
 [data-tema="oscuro"] {
   --fondo: #12161c;
+  --fondo-suave: #161c24;
   --texto: #e8ecf1;
+  --texto-suave: #a7b2c0;
   --acento: #5aa2e8;
+  --acento-fuerte: #8dbdf2;
+  --acento-suave: #1d2f47;
   --tarjeta: #1c232e;
   --borde: #33404f;
+  --exito-fondo: #17301f;
+  --exito-texto: #7fd79a;
+  --exito-borde: #34a853;
+  --error: #ff8a80;
+  --sombra: 0 4px 18px rgba(0, 0, 0, 0.35);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+html {
+  /* Desplazamiento suave al pulsar los enlaces del menú */
+  scroll-behavior: smooth;
+  /* Deja espacio arriba para el encabezado fijo (sticky) */
+  scroll-padding-top: 84px;
+}
+
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: system-ui, -apple-system, "Segoe UI", Arial, Helvetica, sans-serif;
   background: var(--fondo);
   color: var(--texto);
   line-height: 1.6;
-  transition: background .25s, color .25s;
+  transition: background 0.25s, color 0.25s;
 }
 
 a { color: var(--acento); }
+
+/* Foco visible y accesible al navegar con teclado */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--acento);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--acento);
+  color: #fff;
+}

@@ -1,28 +1,34 @@
-/* Estilos de los componentes del portafolio
-   (los colores salen de las variables definidas en index.css) */
+/* Estilos de los componentes del portafolio.
+   Todos los colores salen de las variables de index.css,
+   por eso el modo oscuro funciona sin duplicar reglas. */
 
 /* ---------- Encabezado y navegación ---------- */
 .encabezado {
   border-bottom: 1px solid var(--borde);
-  padding: 16px 20px 40px;
+  background: linear-gradient(180deg, var(--fondo-suave), var(--fondo));
+  padding-bottom: 48px;
 }
 
 .navegacion {
-  max-width: 960px;
+  /* Barra fija: queda visible arriba al hacer scroll */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  max-width: 1040px;
   margin: 0 auto;
+  padding: 12px 20px;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 18px;
   flex-wrap: wrap;
+  background: var(--fondo);
+  border-bottom: 1px solid var(--borde);
 }
 
-.logo {
-  font-weight: bold;
-  font-size: 22px;
-  color: var(--acento);
-}
+.logo { font-weight: 800; font-size: 24px; color: var(--texto); letter-spacing: -0.5px; }
+.logo-punto { color: var(--acento); }
 
-.navegacion ul {
+.nav-enlaces {
   list-style: none;
   display: flex;
   gap: 16px;
@@ -30,10 +36,41 @@
   margin-right: auto;
 }
 
-.navegacion a { text-decoration: none; }
-.navegacion a:hover { text-decoration: underline; }
+.nav-enlaces a {
+  text-decoration: none;
+  color: var(--texto);
+  font-weight: 600;
+  font-size: 15px;
+}
+.nav-enlaces a:hover { color: var(--acento); text-decoration: underline; }
 
-#btn-tema {
+.nav-controles { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+/* Selector de idioma ES | EN */
+.selector-idioma {
+  display: inline-flex;
+  border: 1px solid var(--borde);
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--tarjeta);
+}
+
+.selector-idioma .idioma {
+  border: none;
+  background: transparent;
+  color: var(--texto-suave);
+  padding: 7px 13px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.selector-idioma .idioma.activo {
+  background: var(--acento);
+  color: #fff;
+}
+
+.btn-tema {
   padding: 8px 14px;
   border: 1px solid var(--borde);
   border-radius: 20px;
@@ -41,124 +78,333 @@
   color: var(--texto);
   cursor: pointer;
   font-size: 14px;
+  font-weight: 600;
+}
+.btn-tema:hover { border-color: var(--acento); }
+
+/* ---------- Presentación (hero) ---------- */
+.presentacion { max-width: 1040px; margin: 44px auto 0; padding: 0 20px; }
+
+.presentacion-rol {
+  color: var(--acento);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-size: 13px;
+  margin-bottom: 8px;
 }
 
-.presentacion {
-  max-width: 960px;
-  margin: 48px auto 0;
+.presentacion h1 { font-size: 42px; line-height: 1.15; margin-bottom: 14px; }
+.presentacion-texto { max-width: 680px; font-size: 18px; color: var(--texto-suave); }
+
+.datos-rapidos {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
 }
 
-.presentacion h1 { font-size: 36px; margin-bottom: 12px; }
-.presentacion p { max-width: 640px; font-size: 18px; }
+.datos-rapidos li {
+  background: var(--acento-suave);
+  border: 1px solid var(--borde);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.presentacion-botones { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
 
 .boton {
   display: inline-block;
-  margin-top: 20px;
-  padding: 10px 22px;
+  padding: 11px 22px;
   background: var(--acento);
-  color: #fff;
-  border-radius: 6px;
+  color: #fff !important;
+  border: 1px solid var(--acento);
+  border-radius: 8px;
   text-decoration: none;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 15px;
 }
+.boton:hover { background: var(--acento-fuerte); }
+
+.boton-secundario {
+  background: transparent;
+  color: var(--acento) !important;
+}
+.boton-secundario:hover { background: var(--acento-suave); }
 
 /* ---------- Secciones ---------- */
-.seccion {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 40px 20px;
-}
+.seccion { max-width: 1040px; margin: 0 auto; padding: 44px 20px; }
 
 .seccion h2 {
-  font-size: 26px;
-  margin-bottom: 16px;
+  font-size: 28px;
+  margin-bottom: 14px;
   border-bottom: 3px solid var(--acento);
   display: inline-block;
   padding-bottom: 4px;
 }
 
 .seccion p { margin-bottom: 12px; }
+.seccion-intro { color: var(--texto-suave); max-width: 720px; }
 
-/* Habilidades en forma de etiquetas */
-.habilidades {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+/* ---------- Habilidades con barras ---------- */
+.habilidades-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 8px;
 }
 
-.habilidades li {
+.habilidad {
   background: var(--tarjeta);
   border: 1px solid var(--borde);
-  border-radius: 20px;
-  padding: 8px 16px;
-  font-weight: bold;
+  border-radius: var(--radio);
+  padding: 16px 18px;
 }
 
-/* Tarjetas de proyectos: rejilla que se adapta al ancho */
+.habilidad-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.habilidad-cabecera h3 { font-size: 16px; }
+.habilidad-nivel-numero { font-weight: 800; color: var(--acento); }
+
+/* Barra de progreso: el relleno crece según el nivel (%) */
+.barra {
+  height: 10px;
+  background: var(--fondo);
+  border: 1px solid var(--borde);
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 10px 0 8px;
+}
+
+.barra-relleno {
+  height: 100%;
+  background: linear-gradient(90deg, var(--acento), var(--acento-fuerte));
+  border-radius: 999px;
+  /* Animación suave cuando la página carga */
+  transition: width 0.8s ease;
+}
+
+.habilidad-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--texto-suave);
+  margin-bottom: 0 !important;
+}
+.habilidad-categoria { font-style: italic; }
+
+/* ---------- Tarjetas de proyectos ---------- */
 .tarjetas {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+  margin-top: 8px;
 }
 
 .tarjeta {
+  position: relative;
+  display: flex;
+  flex-direction: column;
   background: var(--tarjeta);
   border: 1px solid var(--borde);
-  border-radius: 10px;
-  padding: 18px;
+  border-radius: var(--radio);
+  padding: 20px;
+  box-shadow: var(--sombra);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.tarjeta:hover { transform: translateY(-3px); border-color: var(--acento); }
+.tarjeta-destacada { border-color: var(--acento); }
+
+.tarjeta-etiqueta {
+  align-self: flex-start;
+  background: var(--acento);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 20px;
+  padding: 3px 10px;
+  margin-bottom: 10px;
 }
 
-.tarjeta h3 { margin-bottom: 8px; color: var(--acento); }
-.tarjeta .tecnologias { font-size: 13px; opacity: .75; margin-top: 8px; }
+.tarjeta h3 { margin-bottom: 8px; color: var(--acento); font-size: 19px; }
+.tarjeta-descripcion { color: var(--texto-suave); flex-grow: 1; }
 
-/* ---------- Formulario de contacto ---------- */
+.tarjeta-tecnologias {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 12px 0 16px;
+}
+.tarjeta-tecnologias li {
+  background: var(--fondo);
+  border: 1px solid var(--borde);
+  border-radius: 20px;
+  padding: 2px 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.tarjeta-enlaces { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; }
+
+.tarjeta-enlace {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  border: 1px solid var(--acento);
+  border-radius: 8px;
+  padding: 8px 14px;
+  color: var(--acento);
+}
+.tarjeta-enlace:hover { background: var(--acento-suave); }
+
+.tarjeta-enlace-principal { background: var(--acento); color: #fff !important; }
+.tarjeta-enlace-principal:hover { background: var(--acento-fuerte); }
+
+/* ---------- Línea de tiempo ---------- */
+.linea-tiempo {
+  list-style: none;
+  margin-top: 12px;
+  /* La línea vertical se dibuja con el borde izquierdo */
+  border-left: 3px solid var(--borde);
+  margin-left: 8px;
+}
+
+.linea-tiempo-item { position: relative; padding: 0 0 28px 28px; }
+.linea-tiempo-item:last-child { padding-bottom: 4px; }
+
+/* Punto de cada evento, centrado sobre la línea */
+.linea-tiempo-punto {
+  position: absolute;
+  left: -9px;
+  top: 6px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--acento);
+  border: 3px solid var(--fondo);
+  box-shadow: 0 0 0 2px var(--acento);
+}
+
+.linea-tiempo-contenido {
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 16px 18px;
+}
+
+.linea-tiempo-meta { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 6px !important; }
+.linea-tiempo-periodo { font-weight: 800; color: var(--acento); }
+
+.linea-tiempo-tipo {
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 20px;
+  padding: 2px 10px;
+  background: var(--acento-suave);
+  color: var(--acento);
+}
+.tipo-proyecto { background: var(--exito-fondo); color: var(--exito-texto); }
+.tipo-logro { background: #fff3cd; color: #7a5b00; }
+[data-tema="oscuro"] .tipo-logro { background: #3d3413; color: #ffd968; }
+
+.linea-tiempo-contenido h3 { margin-bottom: 6px; font-size: 18px; }
+.linea-tiempo-contenido p { color: var(--texto-suave); margin-bottom: 0; }
+
+/* ---------- Contacto y formulario ---------- */
+.contacto-datos { margin-bottom: 8px; }
+.contacto-datos p { margin-bottom: 6px; }
+
 .form-contacto {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  max-width: 480px;
-  margin-top: 16px;
+  gap: 16px;
+  max-width: 520px;
+  margin-top: 18px;
 }
 
-.form-contacto label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  font-weight: bold;
-}
+.campo { display: flex; flex-direction: column; gap: 5px; }
+.campo label { font-weight: 700; }
 
-.form-contacto input,
-.form-contacto textarea {
-  padding: 10px;
+.campo input,
+.campo textarea {
+  padding: 11px 12px;
   border: 1px solid var(--borde);
-  border-radius: 6px;
+  border-radius: 8px;
   background: var(--fondo);
   color: var(--texto);
   font-size: 15px;
   font-family: inherit;
+  width: 100%;
 }
 
-.form-contacto button {
-  padding: 10px;
+/* Campo con error: borde rojo (aria-invalid lo marca React) */
+.campo input[aria-invalid="true"],
+.campo textarea[aria-invalid="true"] { border-color: var(--error); }
+
+.campo-error { color: var(--error); font-size: 14px; font-weight: 600; margin-bottom: 0 !important; }
+.campo-ayuda { color: var(--texto-suave); font-size: 12px; text-align: right; margin-bottom: 0 !important; }
+
+.form-contacto > button {
+  padding: 12px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   background: var(--acento);
   color: #fff;
   font-size: 15px;
+  font-weight: 700;
   cursor: pointer;
 }
+.form-contacto > button:hover:not(:disabled) { background: var(--acento-fuerte); }
+.form-contacto > button:disabled { opacity: 0.65; cursor: wait; }
+
+.form-exito {
+  max-width: 520px;
+  margin-top: 18px;
+  background: var(--exito-fondo);
+  border: 1px solid var(--exito-borde);
+  color: var(--exito-texto);
+  border-radius: var(--radio);
+  padding: 20px;
+}
+.form-exito h3 { margin-bottom: 8px; }
+.form-exito p { margin-bottom: 14px; }
 
 /* ---------- Pie ---------- */
 .pie {
   text-align: center;
-  padding: 24px 20px;
+  padding: 26px 20px;
   border-top: 1px solid var(--borde);
   font-size: 14px;
-  opacity: .8;
+  color: var(--texto-suave);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
 }
 
-/* Ajustes para pantallas pequeñas */
-@media (max-width: 560px) {
-  .presentacion h1 { font-size: 28px; }
-  .navegacion { gap: 12px; }
+/* ---------- Responsive: pantallas pequeñas ---------- */
+@media (max-width: 720px) {
+  .navegacion { gap: 10px; }
+  .nav-enlaces { order: 3; width: 100%; gap: 12px; }
+  .presentacion h1 { font-size: 32px; }
+  .presentacion-texto { font-size: 16px; }
+  .seccion { padding: 34px 16px; }
+  html { scroll-padding-top: 120px; }
+}
+
+@media (max-width: 420px) {
+  .presentacion h1 { font-size: 27px; }
+  .habilidades-grid,
+  .tarjetas { grid-template-columns: 1fr; }
+  .presentacion-botones .boton { width: 100%; text-align: center; }
 }
